@@ -1,7 +1,7 @@
 "use strict";
-
 const express = require("express");
 const morgan = require("morgan");
+const { allSportsHandler } = require("./handlers/allSportsHandler");
 
 // IMPORT HANDLERS
 const { getHome } = require("./handlers/homeHandler")
@@ -27,6 +27,8 @@ express()
     .use("/", express.static(__dirname + "/"))
 
 
+
     .get("/home", getHome)
+    .get("/sports", allSportsHandler)
 
     .listen(PORT, () => console.info(`Listening on port ${PORT}`));
